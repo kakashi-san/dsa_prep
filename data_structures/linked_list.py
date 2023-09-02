@@ -1,5 +1,5 @@
 """
-implementing a basic data structure: a singly linked list.
+Implementing a basic data structure: a singly linked list.
 Create two classes:
     1. Node: Node class will represent an individual node within the linked list
     2. LinkedList: LinkedList class will manage the overall list structure.

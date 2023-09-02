@@ -116,8 +116,24 @@ class LinkedList:
         
         self.tail = pre
         self.tail.next = None
-        self.length -=1
+        self.length -= 1
         return temp
+    
+    def prepend(self, value):
+        new_node = Node(value=value)
+
+        if self.length == 0:
+            self.head = new_node
+            self.tail = new_node
+            self.length += 1
+
+        else:
+            new_node.next = self.head
+            self.head = new_node
+            self.length += 1
+
+        return True
+        
 
 
 
@@ -235,5 +251,57 @@ check(None, popped_node, "Popped node from empty linked list (third pop):")
 check(None, linked_list.head, "Head of linked list (after third pop):")
 check(None, linked_list.tail, "Tail of linked list (after third pop):")
 check(0, linked_list.length, "Length of linked list (after third pop):")
+
+"""
+"""
+my_linked_list = LinkedList(2)
+my_linked_list.append(3)
+
+print('Before prepend():')
+print('----------------')
+print('Head:', my_linked_list.head.value)
+print('Tail:', my_linked_list.tail.value)
+print('Length:', my_linked_list.length, '\n')
+print('Linked List:')
+my_linked_list.print_list()
+
+
+my_linked_list.prepend(1)
+
+
+print('\n\nAfter prepend():')
+print('---------------')
+print('Head:', my_linked_list.head.value)
+print('Tail:', my_linked_list.tail.value)
+print('Length:', my_linked_list.length, '\n')
+print('Linked List:')
+my_linked_list.print_list()
+
+"""
+
+"""
+    EXPECTED OUTPUT:
+    
+    Before prepend():
+    ----------------
+    Head: 2
+    Tail: 3
+    Length: 2 
+
+    Linked List:
+    2
+    3
+
+
+    After prepend():
+    ---------------
+    Head: 1
+    Tail: 3
+    Length: 3 
+
+    Linked List:
+    1
+    2
+    3   
 
 """

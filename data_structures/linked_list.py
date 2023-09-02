@@ -94,9 +94,9 @@ class LinkedList:
         self
         ):
         """
-        The pop method removes the last node (tail) from the linked list
-        and return the removed node.
-        If the list is empty, the method should return None. 
+        A function to pop last value in the list.
+            1. remove the last node (tail) from the linked list and return the removed node.
+            2. If the list is empty, the method should return None. 
         """
 
         if self.length == 0:
@@ -119,7 +119,17 @@ class LinkedList:
         self.length -= 1
         return temp
     
-    def prepend(self, value):
+    def prepend(
+            self,
+            value: Any
+            ) -> bool:
+        """
+        A function to add a new node with a given value to the beginning of the linked list, 
+            1. handles the cases where the list is empty and non-empty
+            2. creates a new node with the given value and add it to the beginning of the list.
+            3. update the head and length attributes to reflect the addition of the new node.
+            4. return True if the operation is successful.
+        """
         new_node = Node(value=value)
 
         if self.length == 0:

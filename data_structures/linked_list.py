@@ -23,6 +23,7 @@ class Node:
         self.next = None
         
 class LinkedList:
+
     def __init__(
         self,
         value : Any,
@@ -39,6 +40,60 @@ class LinkedList:
         
         self.length = 1
 
+    def make_empty(
+        self
+    ) -> None:
+        """
+        A function to empty the list.
+            1. points the head and tail to None value
+            2. re-initialises the list lenght to 0.
+        """
+        self.head = None
+        self.tail = None
+        self.length = 0
+
+    def print_list(
+            self
+            )-> None:
+        """
+        A function that prints the linked list's elements,
+        one per line.
+        """
+        temp = self.head
+        while temp is not None:
+            print(temp.value)
+            temp = temp.next
+
+    def append(
+        self,
+        value
+    )-> bool :
+        
+        """
+        A function to append value at the end of the list.
+            1. Create a new node with give value set to value.
+            2. Append the newly created node to the end of the list
+        """
+        new_node = Node(
+            value=value
+            )
+        
+        if self.length == 0:
+            self.head = new_node
+            
+        else:
+            self.tail.next =  new_node
+
+        self.tail = new_node
+        self.tail.next =  None
+        self.length += 1
+
+        return True
+
+"""
+[CONSTRUCTOR VALIDATION]
+"""
+
 """
 my_linked_list = LinkedList(4)
 
@@ -47,12 +102,44 @@ print('Tail:', my_linked_list.tail.value)
 print('Length:', my_linked_list.length)
 
 """
-
 """
     EXPECTED OUTPUT:
     ----------------
     Head: 4
     Tail: 4
     Length: 1
+    
+"""
+
+
+"""
+
+[APPEND VALIDATION]
+"""
+"""
+my_linked_list = LinkedList(1)
+my_linked_list.make_empty()
+
+my_linked_list.append(1)
+my_linked_list.append(2)
+
+print('Head:', my_linked_list.head.value)
+print('Tail:', my_linked_list.tail.value)
+print('Length:', my_linked_list.length, '\n')
+
+print('Linked List:')
+my_linked_list.print_list()
+"""
+
+"""
+    EXPECTED OUTPUT:
+    ----------------
+    Head: 1
+    Tail: 2
+    Length: 2 
+
+    Linked List:
+    1
+    2
     
 """

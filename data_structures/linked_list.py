@@ -16,8 +16,8 @@ class Node:
         ) -> None:
         """
         A constructor initializes:
-            the value attribute of the node.
-            the next attribute, initialized to None, will store a reference to the next node in the list.
+            1. the value attribute of the node.
+            2. the next attribute, initialized to None, will store a reference to the next node in the list.
         """
         self.value = value
         self.next = None

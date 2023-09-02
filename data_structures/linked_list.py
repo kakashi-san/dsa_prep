@@ -12,7 +12,7 @@ class Node:
 
     def __init__(
         self,
-        value: Any,
+        value : Any,
         ) -> None:
         """
         A constructor initializes:
@@ -42,7 +42,7 @@ class LinkedList:
 
     def make_empty(
         self
-    ) -> None:
+        ) -> None:
         """
         A function to empty the list.
             1. points the head and tail to None value
@@ -53,8 +53,8 @@ class LinkedList:
         self.length = 0
 
     def print_list(
-            self
-            )-> None:
+        self
+        )-> None:
         """
         A function that prints the linked list's elements,
         one per line.
@@ -66,8 +66,8 @@ class LinkedList:
 
     def append(
         self,
-        value
-    )-> bool :
+        value : Any,
+        )-> bool :
         
         """
         A function to append value at the end of the list.
@@ -89,6 +89,21 @@ class LinkedList:
         self.length += 1
 
         return True
+    
+    def pop(
+        self
+        ):
+        """
+        The pop method removes the last node (tail) from the linked list
+        and return the removed node.
+        If the list is empty, the method should return None. 
+        """
+
+        if self.length == 0:
+            return None
+        
+        if self.length == 1:
+            
 
 """
 [CONSTRUCTOR VALIDATION]

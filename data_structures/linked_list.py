@@ -201,9 +201,6 @@ my_linked_list.print_list()
     
 """
 
-##########################################################   
-##   Test code below will print output to "User logs"   ##
-##########################################################
 """
 def check(expect, actual, message):
     print(message)

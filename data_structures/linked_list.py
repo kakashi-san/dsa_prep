@@ -8,12 +8,12 @@ Create two classes:
 
 from typing import Any
 
-class Node:
 
+class Node:
     def __init__(
         self,
-        value : Any,
-        ) -> None:
+        value: Any,
+    ) -> None:
         """
         A constructor initializes:
             1. the value attribute of the node.
@@ -21,28 +21,26 @@ class Node:
         """
         self.value = value
         self.next = None
-        
-class LinkedList:
 
+
+class LinkedList:
     def __init__(
         self,
-        value : Any,
-        ) -> None:
+        value: Any,
+    ) -> None:
 
         """
         A constructor creates a new Node using the value arguement, and initializes
             1. the head and tail attributes of the linked list to point to the new node.
             2. length attribute, initialized to 1, which represents the current number of nodes in the list.
         """
-        
+
         self.head = Node(value)
         self.tail = self.head
-        
+
         self.length = 1
 
-    def make_empty(
-        self
-        ) -> None:
+    def make_empty(self) -> None:
         """
         A function to empty the list.
             1. points the head and tail to None value
@@ -52,9 +50,7 @@ class LinkedList:
         self.tail = None
         self.length = 0
 
-    def print_list(
-        self
-        )-> None:
+    def print_list(self) -> None:
         """
         A function that prints the linked list's elements,
         one per line.
@@ -66,65 +62,58 @@ class LinkedList:
 
     def append(
         self,
-        value : Any,
-        )-> bool :
-        
+        value: Any,
+    ) -> bool:
+
         """
         A function to append value at the end of the list.
             1. Create a new node with give value set to value.
             2. Append the newly created node to the end of the list
         """
-        new_node = Node(
-            value=value
-            )
-        
+        new_node = Node(value=value)
+
         if self.length == 0:
             self.head = new_node
-            
+
         else:
-            self.tail.next =  new_node
+            self.tail.next = new_node
 
         self.tail = new_node
-        self.tail.next =  None
+        self.tail.next = None
         self.length += 1
 
         return True
-    
-    def pop(
-        self
-        ):
+
+    def pop(self):
         """
         A function to pop last value in the list.
             1. remove the last node (tail) from the linked list and return the removed node.
-            2. If the list is empty, the method should return None. 
+            2. If the list is empty, the method should return None.
         """
 
         if self.length == 0:
             return None
-        
+
         temp = self.head
         if self.length == 1:
             self.head = None
             self.tail = None
             self.length -= 1
             return temp
-        
+
         pre = self.head
         while temp.next:
             pre = temp
             temp = temp.next
-        
+
         self.tail = pre
         self.tail.next = None
         self.length -= 1
         return temp
-    
-    def prepend(
-            self,
-            value: Any
-            ) -> bool:
+
+    def prepend(self, value: Any) -> bool:
         """
-        A function to add a new node with a given value to the beginning of the linked list, 
+        A function to add a new node with a given value to the beginning of the linked list,
             1. handles the cases where the list is empty and non-empty
             2. creates a new node with the given value and add it to the beginning of the list.
             3. update the head and length attributes to reflect the addition of the new node.
@@ -137,14 +126,35 @@ class LinkedList:
 
         else:
             new_node.next = self.head
-        
+
         self.head = new_node
         self.length += 1
 
-
         return True
-        
 
+    def pop_first(self):
+        """
+        A function to remove the first node (the head)
+        update the head attribute and the length attribute accordingly,
+        and return the removed node.
+        1. handles the cases where the list is empty and where the list has one or more nodes.
+        2. saves a reference to the current head node before updating the head attribute.
+        3. updates the head attribute to the second node in the list.
+        4. disconnects the removed node from the list by setting its next attribute to None.
+        5. updates the length attribute of the LinkedList to reflect the removal of the node.
+        6. If the list becomes empty after removing the node, set the tail attribute of the LinkedList to None.
+        7. return the removed node, or None if the list is empty.
+        """
+
+        if self.length == 0:
+            return None
+
+        else:
+            temp = self.head
+            self.head = self.head.next
+            self.length -= 1
+            temp.next = None
+            return temp
 
 
 """

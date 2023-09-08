@@ -162,6 +162,31 @@ class LinkedList:
             self.length -= 1
             temp.next = None
             return temp
+        
+    def get(
+            self,
+            index
+            ):
+        """
+        A function to take an integer index as a parameter
+        and return a pointer to the node at the specified index in the linked list.
+
+        1. handles the cases where the index is out of bounds.
+        2. start at the head of the list and traverse the list using the next attribute of the nodes.
+        3. should stop traversing the list when it reaches the specified index and return the node at that position.
+        4. If the index is out of bounds, the method returns None.
+        """
+
+        if index > self.length or index < 0:
+            return None
+        
+        temp = self.head
+        track = 0
+        while track < index:
+            temp = temp.next
+            track += 1
+
+        return temp
 
 
 """
@@ -329,3 +354,10 @@ my_linked_list.print_list()
     3   
 
 """
+
+my_linked_list = LinkedList(0)
+my_linked_list.append(1)
+my_linked_list.append(2)
+my_linked_list.append(3)
+
+print(my_linked_list.get(3).value)

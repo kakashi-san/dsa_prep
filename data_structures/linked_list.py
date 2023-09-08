@@ -207,6 +207,81 @@ class LinkedList:
             temp.value = value
             return True
         return False
+    
+    def insert(
+            self,
+            index,
+            value
+            ):
+        """
+        A function that takes an integer index and a value as parameters
+        and insert a new node with the given value at the specified index in the linked list.
+
+        1. take an integer index and a value as parameters and
+        2. insert a new node with the given value at the specified index in the linked list.
+        3. create a new node with the given value and insert it at the specified index.
+        4. update the next attribute of the previous node to point to the new node.
+        5. increment the length attribute of the LinkedList class.
+        6. return True if the new node is successfully inserted.
+        7. If the index is out of bounds,  return False.
+
+
+
+
+        """
+        if index < 0 or index > self.length:
+            return False
+        
+        if index == 0:
+            return self.prepend(value)
+
+        if index == self.length:
+            return self.append(value)
+        
+        new_node = Node(value=value)
+        
+        temp = self.head
+        pre = self.head
+        track = 0
+        while track < index:
+            pre = temp
+            temp = temp.next
+            track += 1
+
+        pre.next = new_node
+        new_node.next = temp
+        self.length += 1
+
+        return True
+
+
+my_linked_list = LinkedList(1)
+my_linked_list.append(3)
+
+
+print('LL before insert():')
+my_linked_list.print_list()
+
+
+my_linked_list.insert(1,2)
+
+print('\nLL after insert(2) in middle:')
+my_linked_list.print_list()
+
+
+my_linked_list.insert(0,0)
+
+print('\nLL after insert(0) at beginning:')
+my_linked_list.print_list()
+
+
+my_linked_list.insert(4,4)
+
+print('\nLL after insert(4) at end:')
+my_linked_list.print_list()
+            
+
+
 
 """
 [CONSTRUCTOR VALIDATION]
@@ -398,3 +473,4 @@ print('\nLL after set_value():')
 my_linked_list.print_list()
 
 """
+

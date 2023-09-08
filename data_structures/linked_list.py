@@ -187,7 +187,26 @@ class LinkedList:
             track += 1
 
         return temp
+    
+    def set_value(
+            self,
+            index,
+            value
+            ):
+        """
+        A function takes an integer index and a value as parameters
+        and updates the value of the node at the specified index in the linked list.
 
+        1. update the value of the node if the node is found.
+        2. returns True if the value is successfully updated.
+        3. If the node is not found (i.e., the index is out of bounds), the method should return False.
+        """
+        temp = self.get(index)
+
+        if temp:
+            temp.value = value
+            return True
+        return False
 
 """
 [CONSTRUCTOR VALIDATION]
@@ -355,9 +374,27 @@ my_linked_list.print_list()
 
 """
 
+"""
 my_linked_list = LinkedList(0)
 my_linked_list.append(1)
 my_linked_list.append(2)
 my_linked_list.append(3)
 
 print(my_linked_list.get(3).value)
+"""
+"""
+my_linked_list = LinkedList(11)
+my_linked_list.append(3)
+my_linked_list.append(23)
+my_linked_list.append(7)
+
+print('LL before set_value():')
+my_linked_list.print_list()
+
+my_linked_list.set_value(1,4)
+
+
+print('\nLL after set_value():')
+my_linked_list.print_list()
+
+"""

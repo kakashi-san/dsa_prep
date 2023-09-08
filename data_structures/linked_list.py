@@ -148,6 +148,13 @@ class LinkedList:
 
         if self.length == 0:
             return None
+        
+        if self.length == 1:
+            temp = self.head
+            self.head = None
+            self.tail = None
+            self.length -= 1
+            return temp
 
         else:
             temp = self.head

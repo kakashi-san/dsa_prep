@@ -10,10 +10,7 @@ from typing import Any
 
 
 class Node:
-    def __init__(
-        self,
-        value: Any,
-    ) -> None:
+    def __init__(self, value: Any,) -> None:
         """
         A constructor initializes:
             1. the value attribute of the node.
@@ -24,10 +21,7 @@ class Node:
 
 
 class LinkedList:
-    def __init__(
-        self,
-        value: Any,
-    ) -> None:
+    def __init__(self, value: Any,) -> None:
 
         """
         A constructor creates a new Node using the value arguement, and initializes
@@ -60,10 +54,7 @@ class LinkedList:
             print(temp.value)
             temp = temp.next
 
-    def append(
-        self,
-        value: Any,
-    ) -> bool:
+    def append(self, value: Any,) -> bool:
 
         """
         A function to append value at the end of the list.
@@ -148,7 +139,7 @@ class LinkedList:
 
         if self.length == 0:
             return None
-        
+
         if self.length == 1:
             temp = self.head
             self.head = None
@@ -162,11 +153,8 @@ class LinkedList:
             self.length -= 1
             temp.next = None
             return temp
-        
-    def get(
-            self,
-            index
-            ):
+
+    def get(self, index):
         """
         A function to take an integer index as a parameter
         and return a pointer to the node at the specified index in the linked list.
@@ -179,7 +167,7 @@ class LinkedList:
 
         if index > self.length or index < 0:
             return None
-        
+
         temp = self.head
         track = 0
         while track < index:
@@ -187,12 +175,8 @@ class LinkedList:
             track += 1
 
         return temp
-    
-    def set_value(
-            self,
-            index,
-            value
-            ):
+
+    def set_value(self, index, value):
         """
         A function takes an integer index and a value as parameters
         and updates the value of the node at the specified index in the linked list.
@@ -207,12 +191,8 @@ class LinkedList:
             temp.value = value
             return True
         return False
-    
-    def insert(
-            self,
-            index,
-            value
-            ):
+
+    def insert(self, index, value):
         """
         A function that takes an integer index and a value as parameters
         and insert a new node with the given value at the specified index in the linked list.
@@ -231,15 +211,15 @@ class LinkedList:
         """
         if index < 0 or index > self.length:
             return False
-        
+
         if index == 0:
             return self.prepend(value)
 
         if index == self.length:
             return self.append(value)
-        
+
         new_node = Node(value=value)
-        
+
         temp = self.head
         pre = self.head
         track = 0
@@ -253,10 +233,8 @@ class LinkedList:
         self.length += 1
 
         return True
-    def remove(
-            self,
-            index
-            ):
+
+    def remove(self, index):
         """
         A function that takes an integer index as a parameter
         and remove the node at the specified index in the linked list,
@@ -269,16 +247,16 @@ class LinkedList:
         6. return the removed node if the removal is successful.
         7. If the index is out of bounds, the method should return None.
         """
-    
+
         if index < 0 or index >= self.length:
             return None
-            
+
         if index == 0:
             return self.pop_first()
-            
-        if index == self.length-1:
+
+        if index == self.length - 1:
             return self.pop()
-            
+
         else:
             track = 0
             temp = self.head
@@ -287,12 +265,12 @@ class LinkedList:
                 pre = temp
                 temp = temp.next
                 track += 1
-            
+
             pre.next = temp.next
             temp.next = None
             self.length -= 1
             return temp
-        
+
     def reverse(self):
         """
         A function to reverse the order of the nodes in the linked list.
@@ -303,7 +281,7 @@ class LinkedList:
         """
         if self.length == 0 or self.length == 1:
             return None
-        
+
         before = None
 
         temp = self.head
@@ -318,24 +296,10 @@ class LinkedList:
             before = temp
             temp = after
 
-my_linked_list = LinkedList(1)
-my_linked_list.append(2)
-my_linked_list.append(3)
-my_linked_list.append(4)
-
-print('LL before reverse():')
-my_linked_list.print_list()
-
-my_linked_list.reverse()
-
-print('\nLL after reverse():')
-my_linked_list.print_list()
-
 
 """
 [CONSTRUCTOR VALIDATION]
 """
-
 """
 my_linked_list = LinkedList(4)
 
@@ -429,6 +393,7 @@ linked_list = LinkedList(1)
 linked_list.append(2)
 linked_list.print_list()
 popped_node = linked_list.pop()
+
 check(2, popped_node.value, "Value of popped node (first pop):")
 check(1, linked_list.head.value, "Head of linked list (after first pop):")
 check(1, linked_list.tail.value, "Tail of linked list (after first pop):")
@@ -549,5 +514,20 @@ my_linked_list.insert(4,4)
 print('\nLL after insert(4) at end:')
 my_linked_list.print_list()
             
+"""
+
+"""
+my_linked_list = LinkedList(1)
+my_linked_list.append(2)
+my_linked_list.append(3)
+my_linked_list.append(4)
+
+print('LL before reverse():')
+my_linked_list.print_list()
+
+my_linked_list.reverse()
+
+print('\nLL after reverse():')
+my_linked_list.print_list()
 
 """

@@ -292,34 +292,44 @@ class LinkedList:
             temp.next = None
             self.length -= 1
             return temp
+        
+    def reverse(self):
+        """
+        A function to reverse the order of the nodes in the linked list.
+        1. handle edge cases, such as an empty list or a list with a single node.
+        2. utilize a temporary variable to swap the head and tail attributes of the LinkedList class.
+        3. use a loop to iterate through the nodes in the list and update the next attribute of each node.
+        4. should not modify the length attribute of the LinkedList class.
+        """
+        if self.length == 0 or self.length == 1:
+            return None
+        
+        before = None
 
+        temp = self.head
+        self.head = self.tail
+        self.tail = temp
+        after = temp.next
+        before = None
+
+        for _ in range(self.length):
+            after = temp.next
+            temp.next = before
+            before = temp
+            temp = after
 
 my_linked_list = LinkedList(1)
+my_linked_list.append(2)
 my_linked_list.append(3)
+my_linked_list.append(4)
 
-
-print('LL before insert():')
+print('LL before reverse():')
 my_linked_list.print_list()
 
+my_linked_list.reverse()
 
-my_linked_list.insert(1,2)
-
-print('\nLL after insert(2) in middle:')
+print('\nLL after reverse():')
 my_linked_list.print_list()
-
-
-my_linked_list.insert(0,0)
-
-print('\nLL after insert(0) at beginning:')
-my_linked_list.print_list()
-
-
-my_linked_list.insert(4,4)
-
-print('\nLL after insert(4) at end:')
-my_linked_list.print_list()
-            
-
 
 
 """
@@ -513,3 +523,31 @@ my_linked_list.print_list()
 
 """
 
+"""
+my_linked_list = LinkedList(1)
+my_linked_list.append(3)
+
+
+print('LL before insert():')
+my_linked_list.print_list()
+
+
+my_linked_list.insert(1,2)
+
+print('\nLL after insert(2) in middle:')
+my_linked_list.print_list()
+
+
+my_linked_list.insert(0,0)
+
+print('\nLL after insert(0) at beginning:')
+my_linked_list.print_list()
+
+
+my_linked_list.insert(4,4)
+
+print('\nLL after insert(4) at end:')
+my_linked_list.print_list()
+            
+
+"""

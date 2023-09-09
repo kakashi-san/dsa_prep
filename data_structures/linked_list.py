@@ -253,6 +253,45 @@ class LinkedList:
         self.length += 1
 
         return True
+    def remove(
+            self,
+            index
+            ):
+        """
+        A function that takes an integer index as a parameter
+        and remove the node at the specified index in the linked list,
+        returning the removed node.
+        1.  handle edge cases, such as removing a node at the beginning or end of the list.
+        2.  utilize the pop_first() and pop() methods for handling these edge cases.
+        3. use the get() method to find the node previous to the one to be removed.
+        4.  update the next attribute of the previous node to point to the node after the removed one.
+        5.  decrement the length attribute of the LinkedList class.
+        6. return the removed node if the removal is successful.
+        7. If the index is out of bounds, the method should return None.
+        """
+    
+        if index < 0 or index >= self.length:
+            return None
+            
+        if index == 0:
+            return self.pop_first()
+            
+        if index == self.length-1:
+            return self.pop()
+            
+        else:
+            track = 0
+            temp = self.head
+            pre = self.head
+            while track < index:
+                pre = temp
+                temp = temp.next
+                track += 1
+            
+            pre.next = temp.next
+            temp.next = None
+            self.length -= 1
+            return temp
 
 
 my_linked_list = LinkedList(1)

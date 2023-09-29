@@ -282,8 +282,6 @@ class LinkedList:
         if self.length == 0 or self.length == 1:
             return None
 
-        before = None
-
         temp = self.head
         self.head = self.tail
         self.tail = temp
